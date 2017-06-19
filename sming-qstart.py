@@ -161,6 +161,10 @@ class Quickstart(object):
 def main():
     arg_parser = make_argparser()
     config = arg_parser.parse_args()
+    if not config.silent:
+        print('Copyright (c) 2017 Jarek Zgoda')
+        print('This is free software; see the source for copying conditions.  There is NO')
+        print('warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.')
     quickstart = Quickstart(config)
     quickstart.run()
 

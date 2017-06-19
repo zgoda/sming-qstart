@@ -2,12 +2,14 @@
 
 Quickstarts your [Sming](https://github.com/SmingHub/Sming) project. This program checks if your environment is sane and creates basic project structure using [sming-skel](https://github.com/zgoda/sming-skel) as a base. It is written in Python and does not require anything besides Python stdlib.
 
+Linux only.
+
 ## Invocation
 
 ```
 $ python sming-qstart.py --help
 usage: sming-qstart.py [-h] [-v | -s] [--skip-sanity-check] [--skip-git-init]
-                       [--skip-git-commit] [--skip-license]
+                       [--skip-git-commit]
                        name
 
 Sming project quickstart
