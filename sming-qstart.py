@@ -109,7 +109,6 @@ class Quickstart(object):
 
     def _clean_skeleton(self):
         vscode_workspace = os.path.join(self.project_dir, '.vscode')
-        shutil.rmtree(vscode_workspace)
         shutil.move(os.path.join(self.project_dir, 'vscode-project'), vscode_workspace)
         gitignore = os.path.join(self.project_dir, '.gitignore')
         shutil.move(os.path.join(self.project_dir, 'gitignore-project'), gitignore)
@@ -125,7 +124,10 @@ class Quickstart(object):
             cwd = os.getcwd()
             os.chdir(self.project_dir)
             try:
-                subprocess.call('git init', shell=True)
+                kw = dict(shell=True)
+                if self.config.silent:
+                    kw.update(dict(stdout=subprocess.PIPE, stderr=subprocess.PIPE))
+                subprocess.call('git init', **kw)
                 self.repo_created = True
             finally:
                 os.chdir(cwd)
@@ -135,8 +137,11 @@ class Quickstart(object):
             cwd = os.getcwd()
             os.chdir(self.project_dir)
             try:
-                subprocess.call('git add .', shell=True)
-                subprocess.call('git commit -m"Initial commit"', shell=True)
+                kw = dict(shell=True)
+                if self.config.silent:
+                    kw.update(dict(stdout=subprocess.PIPE, stderr=subprocess.PIPE))
+                subprocess.call('git add .', **kw)
+                subprocess.call('git commit -m"Initial commit"', **kw)
             finally:
                 os.chdir(cwd)
 
