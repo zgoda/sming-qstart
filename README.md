@@ -23,7 +23,6 @@ optional arguments:
   --skip-sanity-check  skip environment sanity check
   --skip-git-init      skip local git repository initialization
   --skip-git-commit    skip initial git commit
-  --skip-license       skip adding file with MIT license
 ```
 
 ## Sanity checks
@@ -36,4 +35,4 @@ This program will initialize empty local git repository and add initial commit w
 
 ## Licensing
 
-The program itself is licensed under GPL v3. It may be safely used commercially unless you want to modify it and distribute. The skeleton that makes the base of new project is licensed under MIT license and this license is used as a default one for new project if you do not opt to not create a license file.
+The program itself is licensed under GPL v3. It may be safely used commercially unless you want to modify it and distribute. The skeleton that makes the base of new project is licensed under MIT license so you are free to use it as you see fit. I explicitly **do not require** that you put any attribution to sming-skel in your project source files nor in any textual documentation, although this will be nice.

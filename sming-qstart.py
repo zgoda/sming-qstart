@@ -31,9 +31,6 @@ def make_argparser():
     parser.add_argument('--skip-git-commit',
         action='store_true',
         help='skip initial git commit')
-    parser.add_argument('--skip-license',
-        action='store_true',
-        help='skip adding file with MIT license')
     return parser
 
 
@@ -100,8 +97,7 @@ class Quickstart(object):
         shutil.move(os.path.join(self.project_dir, 'vscode-project'), vscode_workspace)
         gitignore = os.path.join(self.project_dir, '.gitignore')
         shutil.move(os.path.join(self.project_dir, 'gitignore-project'), gitignore)
-        if self.config.skip_license:
-            os.remove(os.path.join(self.project_dir, 'LICENSE'))
+        os.remove(os.path.join(self.project_dir, 'LICENSE'))
         with open(os.path.join(self.project_dir, 'README.md'), 'w') as fp:
             fp.write('# %s' % self.config.name)
 
