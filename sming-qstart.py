@@ -69,7 +69,7 @@ class Quickstart(object):
             if not (has_esphome and has_sminghome):
                 msg = 'One or more required variables not found in environment, continue anyway? [yY/nN] '
                 try:
-                    # python2
+                    # python2, noqa because raw_input does not exist in python3
                     cont = raw_input(msg)  # noqa
                 except AttributeError:
                     # python3
