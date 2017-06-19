@@ -18,7 +18,10 @@ import os
 import sys
 import shutil
 import argparse
-import urllib
+try:
+    from urllib import urlretrieve
+except ImportError:
+    from urllib.request import urlretrieve  # noqa
 import zipfile
 import tempfile
 import subprocess
@@ -102,7 +105,7 @@ class Quickstart(object):
         fd, path = tempfile.mkstemp()
         try:
             with os.fdopen(fd, 'w'):
-                urllib.urlretrieve(self.SKEL_ZIP_URL, path)
+                urlretrieve(self.SKEL_ZIP_URL, path)
             tmp_dir = tempfile.mkdtemp()
             try:
                 with zipfile.ZipFile(path, 'r') as archive:
