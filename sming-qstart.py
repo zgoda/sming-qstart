@@ -65,11 +65,19 @@ class Quickstart(object):
         self.repo_created = False
 
     def run(self):
+        if self.config.verbose:
+            print('performing sanity check...')
         self._sanity_check()
+        if self.config.verbose:
+            print('downloading skeleton code...')
         self._download_skeleton()
+        if self.config.verbose:
+            print('cleaning skeleton from unnecessary files...')
         self._clean_skeleton()
         self._git_init()
         self._git_commit()
+        if self.config.verbose:
+            print('project %s initialization done.' % self.config.name)
 
     def _sanity_check(self):
         if not self.config.skip_sanity_check:
@@ -119,8 +127,10 @@ class Quickstart(object):
     def _git_init(self):
         if not self.config.skip_git_init:
             if not self.has_git:
-                print('Git executable not present in $PATH')
+                print('git executable not present in $PATH, skipping step')
                 return
+            if self.config.verbose:
+                print('initializing local git repository...')
             cwd = os.getcwd()
             os.chdir(self.project_dir)
             try:
@@ -134,6 +144,8 @@ class Quickstart(object):
 
     def _git_commit(self):
         if self.repo_created and not self.config.skip_git_commit:
+            if self.config.verbose:
+                print('making initial commit to local git repository...')
             cwd = os.getcwd()
             os.chdir(self.project_dir)
             try:
