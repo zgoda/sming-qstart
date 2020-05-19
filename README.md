@@ -1,5 +1,9 @@
 # Sming-Quickstart
 
+**This project is archived now**
+
+You are free to use it as you wish and fork if you want to extend/fix/change anything but I am no longer maintaining it.
+
 Quickstarts your [Sming](https://github.com/SmingHub/Sming) project. This program checks if your environment is sane and creates basic project structure using [sming-skel](https://github.com/zgoda/sming-skel) as a base. It is written in Python and does not require anything besides Python stdlib.
 
 Linux only, tested on Python 2.7 and 3.5 (will not work with Python 2.6 or earlier, may work with Python 3.6 or newer).
